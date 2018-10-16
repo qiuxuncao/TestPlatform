@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    {#    引入jQuery#}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- 引入本地的 echarts.js -->
+    <script src="../static/js/echarts.js"></script>
+</head>
+<body>
+    <div>
+    {% block content %}
+<!--echarts图表-->
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+// 显示标题，图例和空的坐标轴
+myChart.setOption({
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+});
+
+
+    var auth_count_blog={}; //请求前先不要获取后端返回的数据，先定义空的字典
+    $.get('/echarts/').done(function (auth_count_blog) {
+    <!--$.ajax({--> //用这种请求没有出来图
+        auth_count_blog = {{auth_count_blog|safe}}; // 获取后台传来的数据需要加上safe过滤
+
+        <!--url: '/count_blog/',-->
+        <!--type: 'POST',-->
+        <!--data: {},-->
+        <!--dataType: 'json',-->
+        <!--success:function(auth_count_blog){-->
+           myChart.setOption({
+        xAxis: {
+            data: auth_count_blog['auth'] //获取字典的作者
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: auth_count_blog.blog_count //获取对应的作者的博客数
+            }]
+        });
+            <!--}-->
+    });
+    </script>
+{% endblock %}
+    </div>
+</body>
+</html>
