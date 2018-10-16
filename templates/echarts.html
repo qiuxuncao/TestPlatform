@@ -39,7 +39,7 @@ myChart.setOption({
 
     var auth_count_blog={}; //请求前先不要获取后端返回的数据，先定义空的字典
     $.get('/echarts/').done(function (auth_count_blog) {
-    <!--$.ajax({--> //用这种请求没有出来图，有一点点尴尬啊2018.10.16-15:24
+    <!--$.ajax({--> //用这种请求没有出来图，有一点点尴尬啊2018.10.16-15:35
         auth_count_blog = {{auth_count_blog|safe}}; // 获取后台传来的数据需要加上safe过滤
 
         <!--url: '/count_blog/',-->
