@@ -15,7 +15,7 @@
                     {#data:{'name':naddme},#}
                     {#dataType:"json",#}
                     success:function () {
-                        res = {{ res|safe }}
+                        res = {{ res|safe }}; //从后台获取的数据
                         {#alert("hahha")#}
                         alert("数据："+res.data+"\n状态:"+res.status)
                     }
