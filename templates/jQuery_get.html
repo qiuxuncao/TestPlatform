@@ -8,12 +8,13 @@
     {# jQuery ajax get 请求练习  #}
     <script>
         $(document).ready(function () {
-            $("button").click(function () {
-                $.get("/jQuery_get/",function () {   //这个function里面的参数写什么？
+            $("#test").click(function () {   //用id或者标签名都可以
+            {#$("button").click(function () {#}
+                $.get("/jQuery_get/",function () {
                     {#alert("hhah");#}
-                    dd = {{ dd|safe}}; //从后台传过来的数据，必须放在这里面
-                    console.log(dd.data);
-                    alert("数据："+dd.data+"\n状态："+dd.status);
+                    res = {{ res|safe}}; //从后台传过来的数据，必须放在这里面
+                    console.log(res.data); //为什么没有打印出来
+                    alert("数据："+res.data+"\n状态："+res.status);
                 });
             });
         });
@@ -21,7 +22,7 @@
 </head>
 <body>
 
-<button>测试发送一个jQuery的ajax get请求，并获取返回结果</button>
+<button id="test">测试发送一个jQuery的ajax get请求，并获取返回结果</button>
 </body>
 
 

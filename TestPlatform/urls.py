@@ -17,9 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from echarts.views import echarts
 from echarts.views import jQuery_get
+from echarts.views import jQuery_post
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^echarts/', echarts),
     url(r'^jQuery_get/', jQuery_get),
+    url(r'^jQuery_post/', jQuery_post),
 ]

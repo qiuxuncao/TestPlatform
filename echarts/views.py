@@ -20,6 +20,10 @@ def echarts(request):
 
 def jQuery_get(request):
 
-    dd = {"data":"这是后台返回的数据","status":"true"}
+    res = {"data": "这是后台返回的数据","status": "true"}
+    return render(request, 'jQuery_get.html', {'res': json.dumps(res)})
+
+def jQuery_post(request):
+    res = {"data": "这是post请求后，后台返回的数据","status": "true"}
     print "进来了"
-    return render(request, 'jQuery_get.html', {'dd': json.dumps(dd)})
+    return render(request, 'jQuery_post.html', {'res': json.dumps(res)})
