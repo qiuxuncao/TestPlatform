@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <title>ajax post</title>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-{#post暂时没有好 20181022 16:22#}
+
     <script type="text/javascript">
         $(function () {
             $("button").click(function () {
                 $.ajax({
-                    type:'POST',
-                    url:'/jQuery_post/',
-                    data:{'name':'naddme'},
-                    dataType:"json",
+                    type:"POST",
+                    url:"/jQuery_post/",
+                    {#加上这个传入数据不能显示alert#}
+                    {#data:{'name':naddme},#}
+                    {#dataType:"json",#}
                     success:function () {
-                        alert("hahha")
+                        res = {{ res|safe }}
+                        {#alert("hahha")#}
+                        alert("数据："+res.data+"\n状态:"+res.status)
                     }
                 });
             });
