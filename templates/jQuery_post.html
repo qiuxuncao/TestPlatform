@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax post</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+{#post暂时没有好 20181022 16:22#}
+    <script type="text/javascript">
+        $(function () {
+            $("button").click(function () {
+                $.ajax({
+                    type:'POST',
+                    url:'/jQuery_post/',
+                    data:{'name':'naddme'},
+                    dataType:"json",
+                    success:function () {
+                        alert("hahha")
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="test">post请求</button>
+</body>
+</html>
