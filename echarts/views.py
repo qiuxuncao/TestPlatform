@@ -18,3 +18,8 @@ def echarts(request):
     return render(request, 'echarts.html', {'auth_count_blog': json.dumps(auth_count_blog)})
 
 
+def jQuery_get(request):
+
+    dd = {"data":"这是后台返回的数据","status":"true"}
+    print "进来了"
+    return render(request, 'jQuery_get.html', {'dd': json.dumps(dd)})
